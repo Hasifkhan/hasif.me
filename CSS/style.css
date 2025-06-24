@@ -1,0 +1,744 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100vh;
+    background-color: black;
+    color: #ffffff; /* Use a consistent white color */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: transparent;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 128, 0, 0.7), rgba(0, 0, 0, 0.7)); /* Adjusted transparency for better visibility */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+.logo {
+    font-size: 28px; /* Slightly larger for impact */
+    color: #00ff00; /* Bright green for consistency */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Refined text shadow */
+    text-decoration: none;
+    font-weight: 700; /* Bolder */
+    pointer-events: none;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+}
+
+/* Navbar */
+.navbar a {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    position: relative; /* For the underline effect */
+    transition: color 0.3s ease; /* Smooth color transition */
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.navbar a::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #00ff00; /* Green underline */
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Adjust position */
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after { /* Apply underline to active link as well */
+    width: 100%;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #00ff00; /* Green on hover/active */
+    -webkit-text-fill-color: inherit; /* Reset text fill color for better compatibility */
+    background-clip: unset; /* Reset background clip */
+    -webkit-background-clip: unset; /* Reset webkit background clip */
+}
+
+/* Home Section */
+.home {
+    min-height: 100vh; /* Use min-height for flexible content */
+    display: flex;
+    justify-content: space-between; /* Pushes content to left, image to right */
+    align-items: center; /* Vertically centers items */
+    padding: 120px 10% 0; /* Adjust top padding for header */
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    gap: 40px; /* Space between content and image */
+}
+
+.home-content {
+    max-width: 600px;
+    padding: 20px;
+    margin-left: 0; /* Remove negative margin for better centering */
+    flex: 1; /* Allows content to grow */
+    min-width: 300px; /* Ensures content doesn't get too squished */
+    text-align: left; /* Default to left alignment on large screens */
+}
+
+.home-content h3 {
+    font-size: 36px; /* Slightly larger */
+    font-weight: 700;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+    margin-top: 20px; /* Adjust margin-top */
+    text-shadow: 3px 3px 8px #00ff00; /* Refined text shadow */
+}
+
+.home-content h1 {
+    font-size: 60px; /* Larger */
+    font-weight: 700;
+    line-height: 1.2;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: .7s;
+    text-shadow: 3px 3px 8px #00ff00; /* Refined text shadow */
+} 
+
+.home-content h3 span {
+    color: #00ff00;
+}
+
+.home-content .peragraph { /* More descriptive class name */
+    font-size: 17px; /* Slightly larger for readability */
+    margin: 20px 0 30px;
+    text-align: justify; /* Justify text for a professional look */
+    line-height: 1.6; /* Improved line spacing */
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1.3s;
+}
+
+.home-content .peragraph h3 {
+    font-size: 24px; /* Adjusted size for subheadings */
+    margin-bottom: 10px;
+    text-shadow: none; /* Remove shadow for subheadings within paragraph */
+}
+
+.home-content .peragraph h4 {
+    font-size: 18px; /* Adjusted size for list items */
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.home-sci {
+    margin-top: 30px;
+}
+
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px; /* Slightly larger icons */
+    height: 45px;
+    background: #1a1a1a; /* Darker background for icons */
+    border: 2px solid #00ff00;
+    border-radius: 50%;
+    font-size: 22px; /* Larger icon size */
+    color: #00ff00;
+    text-decoration: none;
+    margin: 0 12px 0 0; /* Adjust margin */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+    opacity: 0;
+    animation: zoomIn 1s ease forwards;
+    animation-delay: 1.6s; /* Adjusted animation delay */
+}
+
+.home-sci a:hover {
+    background: #00ff00;
+    color: #1a1a1a;
+    box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00; /* Stronger glow */
+}
+
+.btn-box {
+    display: inline-block;
+    padding: 14px 32px; /* Larger padding */
+    background: #00ff00;
+    border-radius: 40px;
+    font-size: 17px;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 40px; /* Space from social icons */
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: zoomIn 1s ease forwards;
+    animation-delay: 1.9s; /* Adjusted animation delay */
+}
+
+.btn-box:hover {
+    box-shadow: 0 0 8px #00ff00, 0 0 35px #00ff00, 0 0 70px #00ff00, 0 0 140px #00ff00, 0 0 280px #00ff00;
+}
+
+.home-img {
+    width: 450px; /* Slightly larger image container */
+    height: 450px;
+    opacity: 0;
+    animation: zoomIn 1s ease forwards; /* Only zoomIn animation */
+    animation-delay: 2.1s; /* Adjusted delay as floatImage is removed */
+    flex-shrink: 0; /* Prevent shrinking on smaller screens */
+    margin-left: auto; /* Pushes image to the right within flex container */
+    margin-top: 0; /* Resetting for larger screens */
+}
+
+.home-img .glowing-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(black, rgba(0, 128, 0, 0.411)); /* Base for glowing effect */
+    /* Removed: animation: circleRotate 5s linear infinite; */ /* Stopped the circle rotation */
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5); /* Initial glow */
+}
+
+.home-img .glowing-circle::after {
+    content: '';
+    position: absolute;
+    width: 92%; /* Slightly smaller inner circle */
+    height: 92%;
+    background-color: black;
+    border-radius: 50%;
+    z-index: 1; /* Keep content above this */
+}
+
+.glowing-circle span {
+    display: none; /* Removed the extra span for cleaner glow effect, using pseudo-element instead */
+}
+
+.glowing-circle .image {
+    position: absolute; /* Changed to absolute for centering */
+    width: 90%; /* Adjust size */
+    height: 90%;
+    border-radius: 50%;
+    z-index: 2; /* Ensure image is on top */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black; /* To ensure image doesn't show through */
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    border-radius: 50%; /* Maintain circular shape */
+    transform: none; /* Reset transformation */
+    position: relative; /* Relative to its parent .image */
+    top: auto;
+    left: auto;
+    cursor: default; /* Indicate it's not clickable for the main image */
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: -1;
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+/* Sections (About, Skills, Projects, Contact) */
+.about, .skill, .project, .contact {
+    min-height: 100vh; /* Ensure sections take full viewport height */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center;
+    padding: 70px 10% 0; /* Adjust padding for all sections */
+    margin-top: 0; /* Remove top margin, handled by padding-top in home */
+    text-align: center; /* Center text within sections */
+}
+
+.heading {
+    font-size: 45px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-shadow: 3px 3px 8px #00ff00;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.about-content .peragraph {
+    max-width: 800px; /* Limit width for readability */
+    margin-top: 20px;
+    text-align: justify;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards; /* Fade in for text */
+    animation-delay: 1s;
+}
+
+/* Skills Section */
+.skill-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Space between skill boxes */
+    margin-top: 30px;
+}
+
+.skill-box {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #00ff00;
+    text-align: center;
+    max-width: 350px; /* Max width for individual skill boxes */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: zoomIn 1s ease forwards;
+    animation-delay: 0.7s; /* Stagger animation if needed */
+}
+
+.skill-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.7);
+}
+
+.skill-box h3 {
+    font-size: 28px;
+    color: #00ff00;
+    margin-bottom: 15px;
+}
+
+.skill-box .peragraph {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.5;
+    text-align: center; /* Center text within skill box */
+    margin: 0; /* Remove default margin */
+}
+
+/* Projects Section - Image Grid */
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 1200px; /* Max width for the grid */
+}
+
+.project-box {
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden; /* Hide overflow for image */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #00ff00;
+    position: relative; /* For overlay effect */
+    opacity: 0;
+    animation: zoomIn 1s ease forwards;
+    animation-delay: 0.8s; /* Stagger animation for projects */
+}
+
+.project-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 35px rgba(0, 255, 0, 0.8);
+}
+
+.project-box img {
+    width: 100%;
+    height: 220px; /* Fixed height for project images */
+    object-fit: cover; /* Cover the area, cropping if needed */
+    display: block;
+    cursor: pointer; /* Indicate it's clickable */
+    transition: transform 0.5s ease;
+}
+
+.project-box img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.project-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.project-info h3 {
+    font-size: 24px;
+    color: #00ff00;
+    margin-bottom: 10px;
+}
+
+.project-info .peragraph {
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.project-box .btn-box {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 0; /* Remove top margin */
+    font-size: 15px;
+    border-radius: 30px;
+    background: #00ff00;
+    color: #1a1a1a;
+    text-align: center;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-box .btn-box:hover {
+    background: #00e600; /* Slightly darker green on hover */
+    box-shadow: 0 0 10px #00ff00;
+}
+
+/* Contact Section */
+.contact-form {
+    max-width: 700px;
+    width: 100%;
+    margin-top: 30px;
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 15px;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.8s;
+}
+
+.contact-form .input-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.contact-form .input-box input,
+.contact-form textarea {
+    width: 49%; /* For two columns */
+    padding: 12px;
+    background: #0d0d0d;
+    border: 1px solid #00ff00;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form textarea {
+    width: 100%; /* Full width for message */
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 150px;
+    margin-top: 10px;
+}
+
+.contact-form .input-box input:focus,
+.contact-form textarea:focus {
+    border-color: #00e600;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.contact-form .btn-box {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    background: #00ff00;
+    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 40px;
+    padding: 15px 0;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form .btn-box:hover {
+    background: #00e600;
+    box-shadow: 0 0 15px #00ff00;
+}
+
+/* --- Image Modal Styles --- */
+.image-modal {
+    position: fixed; /* Stay in place */
+    z-index: 200; /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    display: flex; /* Use flex for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.image-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90vw; /* 90% of viewport width */
+    max-height: 90vh; /* 90% of viewport height */
+    object-fit: contain; /* Ensure the whole image is visible */
+    border: 3px solid #00ff00; /* Green border */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+    transform: scale(0.8); /* Start smaller for animation */
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.image-modal.active .modal-content {
+    transform: scale(1); /* Scale to actual size */
+    opacity: 1;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 30px;
+    right: 45px;
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 201; /* Ensure it's above the image */
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #00ff00;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Hide body scroll when modal is active */
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* --- Animations --- */
+@keyframes slideTop {
+    0% { opacity: 0; transform: translateY(100px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideRight {
+    0% { opacity: 0; transform: translateX(-100px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideLeft {
+    0% { opacity: 0; transform: translateX(100px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+    0% { opacity: 0; transform: scale(0); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes floatImage { /* Kept this animation for reference, but it's not applied to the image directly */
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes circleRotate { /* Kept this animation for reference, but it's not applied to the glowing-circle */
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .header {
+        padding: 20px 5%;
+    }
+    .navbar a {
+        margin-left: 25px;
+    }
+    .home {
+        padding: 120px 5% 0;
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center horizontally when stacked */
+        justify-content: flex-start; /* Align content from the top when stacked */
+    }
+    .home-content {
+        max-width: 90%;
+        margin-bottom: 50px; /* Space between content and image */
+        text-align: center; /* Center text when stacked */
+    }
+    .home-img {
+        width: 350px;
+        height: 350px;
+        margin-top: 0; /* Reset margin */
+        margin-left: 0; /* Reset auto margin when stacked */
+    }
+    .glowing-circle .image {
+        width: 88%;
+        height: 88%;
+    }
+    .about, .skill, .project, .contact {
+        padding: 70px 5%;
+        min-height: auto; /* Allow content to dictate height on smaller screens */
+    }
+    .heading {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+    .skill-box, .project-box {
+        max-width: 45%; /* Two columns on tablets */
+    }
+    .project-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .contact-form .input-box {
+        flex-direction: column; /* Stack inputs vertically */
+    }
+    .contact-form .input-box input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .contact-form .input-box input:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Mobile Devices (max 767px) */
+@media (max-width: 767px) {
+    .header {
+        padding: 15px 3%;
+    }
+    .logo {
+        font-size: 22px;
+    }
+    .navbar {
+        display: none; /* Hide navbar on small screens, consider a hamburger menu with JS */
+    }
+    .home {
+        padding: 100px 5% 0;
+    }
+    .home-content h1 {
+        font-size: 48px;
+    }
+    .home-content h3 {
+        font-size: 28px;
+    }
+    .home-content .peragraph {
+        font-size: 15px;
+    }
+    .home-sci {
+        display: flex;
+        justify-content: center; /* Center social icons */
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+    .home-sci a {
+        margin: 15px 8px; /* Adjust spacing */
+    }
+    .btn-box {
+        width: 100%; /* Full width button */
+        text-align: center;
+        padding: 12px 0;
+    }
+    .home-img {
+        width: 300px;
+        height: 300px;
+        margin-top: 30px;
+    }
+    .glowing-circle .image {
+        width: 85%;
+        height: 85%;
+    }
+    .about, .skill, .project, .contact {
+        padding: 50px 5%;
+    }
+    .heading {
+        font-size: 35px;
+        margin-bottom: 30px;
+    }
+    .skill-box, .project-box {
+        max-width: 100%; /* Single column on mobile */
+    }
+    .project-container {
+        grid-template-columns: 1fr; /* Single column grid */
+    }
+    .project-box img {
+        height: 180px; /* Smaller height for mobile project images */
+    }
+}
+
+/* Small Mobile Devices (max 480px) */
+@media (max-width: 480px) {
+    .home-content h1 {
+        font-size: 40px;
+    }
+    .home-content h3 {
+        font-size: 24px;
+    }
+    .home-img {
+        width: 250px;
+        height: 250px;
+    }
+    .glowing-circle .image {
+        width: 80%;
+        height: 80%;
+    }
+    .skill-box h3 {
+        font-size: 24px;
+    }
+    .project-info h3 {
+        font-size: 20px;
+    }
+    .project-info .peragraph {
+        font-size: 14px;
+    }
+}
